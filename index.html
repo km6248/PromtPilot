@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Analyze and improve your AI prompts with PromptPilot.">
+  <meta name="theme-color" content="#0b1020">
+  <title>PromptPilot | AI Prompt Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="PromptPilot home"><span class="logo" aria-hidden="true">✦</span> PromptPilot</a>
+    <span class="tag">AI PROMPT ANALYZER</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">WRITE BETTER PROMPTS</p>
+      <h1>Turn your ideas into<br><span>powerful prompts.</span></h1>
+      <p class="sub">Analyze, improve, and optimize your prompts with a simple smart assistant.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="prompt-label">
+      <label id="prompt-label" for="prompt">Enter your prompt</label>
+      <textarea id="prompt" maxlength="5000" aria-describedby="counter prompt-help"
+        placeholder="Example: Explain how artificial intelligence helps students learn more effectively. Give 5 practical examples in simple language..."></textarea>
+      <p id="prompt-help" class="help">Maximum 5,000 characters. Your prompt is analyzed using transparent quality checks.</p>
+      <div class="actions">
+        <span id="counter" aria-live="polite">0 / 5,000 characters</span>
+        <button id="analyzeBtn" type="button">Analyze my prompt <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="error" class="error" role="alert"></p>
+    </section>
+
+    <section id="results" class="results hidden" aria-labelledby="results-title" aria-live="polite">
+      <div class="result-head">
+        <div><p class="eyebrow">YOUR PROMPT REPORT</p><h2 id="results-title">Analysis results</h2></div>
+        <div class="score"><strong id="score">0</strong><small>/ 100</small></div>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Prompt quality score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="scoreProgress">
+        <div id="progressFill"></div>
+      </div>
+      <div class="columns">
+        <section class="result-card" aria-labelledby="checks-title">
+          <h3 id="checks-title">Quality checklist</h3>
+          <div id="checks"></div>
+        </section>
+        <section class="result-card" aria-labelledby="suggestions-title">
+          <h3 id="suggestions-title">Improvement suggestions</h3>
+          <ul id="suggestions"></ul>
+        </section>
+      </div>
+      <section class="result-card improved-card" aria-labelledby="improved-title">
+        <div class="improved-title"><h3 id="improved-title">Optimized prompt</h3><button id="copyBtn" class="secondary" type="button">Copy prompt</button></div>
+        <pre id="improved"></pre>
+        <p id="copied" class="copied" aria-live="polite"></p>
+      </section>
+    </section>
+    <footer>PromptPilot · Built for AI VIBEATHON 2026 · PromptWars</footer>
+  </main>
+</body>
+</html>
